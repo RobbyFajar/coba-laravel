@@ -19,7 +19,8 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('home', [
-        "title" => "Home"
+        "title" => "Home",
+        "active" => 'home'
     ]);
 });
 
@@ -27,6 +28,7 @@ Route::get('/about', function () {
     return view('about', [
         "title" => "About",
         "name" => "Robby Fajar",
+        "active" => 'about',
         "email" => "robyfajar007@outlook.com",
         "image" => "sabar.jpg"
     ]);
