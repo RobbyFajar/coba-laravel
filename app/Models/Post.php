@@ -2,46 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-
-class Post
+class Post extends Model
 {
-    private static $blog_post =
-    [
-        [
-            "title" => "Judul Post Pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Robby FM",
-            "body" => "Lorem ipsum dolor sit amet consectetur, 
-                adipisicing elit. Minima, molestias vero! 
-                Aliquid provident voluptas quia accusamus earum fugit voluptatem ab veritatis, 
-                cupiditate dicta magnam dolor natus vel, illo sed itaque?"
-        ],
-        [
-            "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Robby FM",
-            "body" => "Lorem ipsum dolor sit amet consectetur, 
-                adipisicing elit. Minima, molestias vero! 
-               "
-        ]
-    ];
+    use HasFactory;
 
-    public static function all()
+    // protected $fillable = ['title', 'excerpt', 'body'];
+    protected $guarded = ['id'];
+
+    public function category()
     {
-        return collect(self::$blog_post);
+        return $this->belongsTo(Category::class);
     }
 
-    public static function find($slug)
+    public function author()
     {
-        $posts = static::all();
-        // $post = [];
-        // foreach ($posts as $p) {
-        //     if ($p["slug"] == $slug) {
-        //         $post = $p;
-        //     }
-        // }
-
-        return $posts->firstWhere('slug', $slug);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

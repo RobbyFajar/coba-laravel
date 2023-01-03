@@ -1,11 +1,16 @@
 @extends('layouts.main')
 
 @section('container')
-    <article>
-        <h2>{{ $post["title"] }}</h2>
-        <h5>{{ $post["author"] }}</h5>
-        <p>{{ $post["body"] }}</p>
+<h1 class='mb-5'>{{ $post->title}}</h1>
+
+<p>By. <a href="/authors/{{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
+
+    <article class="mb-4">
+        
+       {!!  $post->body  !!} 
+    
     </article>
 
-    <a href="/blog">Back to Posts</a>
+    <a href="/blog" class="text-decoration-none">Back to Posts</a>
 @endsection
+
