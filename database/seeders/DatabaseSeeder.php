@@ -46,6 +46,11 @@ class DatabaseSeeder extends Seeder
             'slug' => 'personal'
         ]);
 
+        \App\Models\Category::create([
+            'name' => 'Design',
+            'slug' => 'design'
+        ]);
+
         \App\Models\Post::factory(20)->create();
 
         // \App\Models\Post::create([
