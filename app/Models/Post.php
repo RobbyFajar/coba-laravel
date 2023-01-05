@@ -12,7 +12,12 @@ class Post extends Model
     // protected $fillable = ['title', 'excerpt', 'body'];
     protected $guarded = ['id'];
 
+
+    //using model to get eager loading in controller
     protected $with = ['category', 'author'];
+
+
+    //relation table
 
     public function category()
     {

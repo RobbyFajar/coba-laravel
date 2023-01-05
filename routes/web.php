@@ -24,6 +24,8 @@ Route::get('/', function () {
     ]);
 });
 
+//zero configuration
+
 Route::get('/about', function () {
     return view('about', [
         "title" => "About",
@@ -48,7 +50,7 @@ Route::get('/categories', function () {
     ]);
 });
 
-//halaman single posts using zero configuration and lazy loading 
+//halaman single posts using zero configuration and lazy eager loading 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
         'title' => "Post by Category : $category->name",

@@ -14,6 +14,9 @@ class PostController extends Controller
             "title" => "All Post",
             "active" => 'posts',
             // "posts" => Post::all(),
+
+            // methode eager loading 
+            //"post" => Post::with(['author', 'category'])->get()
             "posts" => Post::latest()->get()
         ]);
     }
